@@ -25,9 +25,7 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Segoe UI', sans-serif;
@@ -310,7 +308,125 @@ section {
   font-weight: 600;
 }
 
+/* ===== EXPERIENCE ===== */
+#experience { background: var(--bg); }
+
+.timeline {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--accent2));
+  transform: translateX(-50%);
+  opacity: 0.4;
+}
+
+.timeline-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  margin-bottom: 3rem;
+  width: 50%;
+  padding-right: 3rem;
+}
+
+/* ===== ALL DOTS — dimmed by default ===== */
+.timeline-dot {
+  position: absolute;
+  right: -20px;
+  top: 20px;
+  width: 40px;
+  height: 40px;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  box-shadow: none;
+}
+
+.timeline-dot::after {
+  content: '🚀';
+  font-size: 1rem;
+  filter: grayscale(1);
+  opacity: 0.4;
+}
+
+/* ===== FIRST DOT ONLY — glowing (current job) ===== */
+.timeline-item:first-child .timeline-dot {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border: none;
+  box-shadow: 0 0 20px rgba(0,245,160,0.6),
+              0 0 40px rgba(0,245,160,0.2);
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.timeline-item:first-child .timeline-dot::after {
+  filter: none;
+  opacity: 1;
+}
+
+.timeline-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  width: 100%;
+  transition: border-color 0.3s, transform 0.3s;
+  text-align: left;
+}
+
+.timeline-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-4px);
+}
+
+.timeline-date {
+  display: inline-block;
+  background: rgba(0,245,160,0.1);
+  color: var(--accent);
+  border: 1px solid rgba(0,245,160,0.3);
+  padding: 0.2rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.timeline-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+
+.timeline-company {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.8rem;
+}
+
+.timeline-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
 /* ===== SKILLS ===== */
+#skills { background: var(--bg-card); }
+
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -318,7 +434,7 @@ section {
 }
 
 .skill-item {
-  background: var(--bg-card);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1.2rem;
@@ -334,7 +450,7 @@ section {
 }
 
 /* ===== CONTACT ===== */
-#contact { background: var(--bg-card); }
+#contact { background: var(--bg); }
 
 .contact-sub {
   color: var(--text-muted);
@@ -369,6 +485,17 @@ footer {
   50%       { transform: translateY(-50%) scale(1.1); }
 }
 
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(0,245,160,0.5),
+                0 0 30px rgba(0,245,160,0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(0,245,160,0.8),
+                0 0 50px rgba(0,245,160,0.4);
+  }
+}
+
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
   .nav-links { display: none; }
@@ -393,14 +520,9 @@ footer {
     padding-top: calc(var(--nav-height) + 2rem);
   }
 
-  .hero-btns {
-    justify-content: center;
-  }
+  .hero-btns { justify-content: center; }
 
-  .blob {
-    width: 300px;
-    height: 300px;
-  }
+  .blob { width: 300px; height: 300px; }
 
   .about-grid {
     grid-template-columns: 1fr;
@@ -417,5 +539,22 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+
+  .timeline::before { left: 20px; }
+
+  .timeline-item {
+    width: 100%;
+    padding-left: 4rem;
+    padding-right: 0;
+    justify-content: flex-start;
+  }
+
+  .timeline-dot {
+    left: 0;
+    right: auto;
+    top: 15px;
+    width: 35px;
+    height: 35px;
   }
 }
