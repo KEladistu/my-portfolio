@@ -52,7 +52,7 @@
             <img id="profile-pic" src="/src/assets/images/kenneth-dark.png" alt="Kenneth Eladistu" />
           </div>
           <div class="about-text">
-            <p>Hi! I'm a passionate Full-Stack developer who loves building fast, clean, and beautiful websites. I specialize in full-stack development using React, Node JS and Django.</p>
+            <p>Hi! I'm a passionate Full-Stack developer who loves building fast, clean, and beautiful websites. I specialize in full-stack development using React, Node JS, Vite and Django.</p>
             <p>When I'm not coding, you'll find me exploring new tech, playing Clash of Clans, or drinking coffee ☕.</p>
             <a href="#contact" class="btn-primary">Let's Work Together</a>
           </div>
@@ -65,15 +65,26 @@
       <div class="section-container">
         <h2 class="section-title">My <span>Projects</span></h2>
         <div class="projects-grid">
-          <div class="project-card">
-            <div class="project-img">🖥️</div>
-            <h3>Project One</h3>
-            <p>A short description of what this project does and the tech used.</p>
-            <div class="project-tags">
-              <span>HTML</span><span>CSS</span><span>JS</span>
+
+          <!-- My Portfolio — with hover preview -->
+          <div class="project-card has-preview">
+            <div class="card-front">
+              <div class="project-img">🖥️</div>
+              <h3>My Personal Portfolio</h3>
+              <p>A responsive personal portfolio built with NodeJS and Vite.</p>
+              <div class="project-tags">
+                <span>HTML5</span><span>CSS3</span><span>Vite</span><span>NodeJS</span>
+              </div>
             </div>
-            <a href="#" class="btn-outline">View Project</a>
+            <div class="card-back">
+              <img src="/src/assets/images/myportfolio.png" alt="My Portfolio Preview" />
+              <div class="card-back-overlay">
+                <a href="#" class="btn-primary">View Project</a>
+              </div>
+            </div>
           </div>
+
+          <!-- Project Two -->
           <div class="project-card">
             <div class="project-img">📱</div>
             <h3>Project Two</h3>
@@ -83,6 +94,8 @@
             </div>
             <a href="#" class="btn-outline">View Project</a>
           </div>
+
+          <!-- Project Three -->
           <div class="project-card">
             <div class="project-img">🎨</div>
             <h3>Project Three</h3>
@@ -92,6 +105,7 @@
             </div>
             <a href="#" class="btn-outline">View Project</a>
           </div>
+
         </div>
       </div>
     </section>
@@ -107,10 +121,10 @@
             <div class="timeline-card">
               <span class="timeline-date">2025 — Present</span>
               <h3>Full Stack Developer</h3>
-              <p class="timeline-company">Planate</p>
-              <p>Built a web application using Django and PostgreSQL, 
-                 with Celery and Redis for synchronization and automated storage to Azure Blob, 
-                 and containerized the system using Docker. </p>
+              <p class="timeline-company">🏢 Planate</p>
+              <p>Built a web application using Django and PostgreSQL,
+                with Celery and Redis for synchronization and automated
+                storage to Azure Blob, and containerized the system using Docker.</p>
             </div>
           </div>
 
@@ -119,9 +133,10 @@
             <div class="timeline-card">
               <span class="timeline-date">2023 — 2025</span>
               <h3>Robotics Engineer</h3>
-              <p class="timeline-company">Planate</p>
-              <p>Developed and trained object detection models using YOLOv8 OBB for parcel and mail recognition, 
-                 and built a Flutter mobile app to control a robotic arm.</p>
+              <p class="timeline-company">🏢 Planate</p>
+              <p>Developed and trained object detection models using YOLOv8 OBB
+                for parcel and mail recognition, and built a Flutter mobile app
+                to control a robotic arm.</p>
             </div>
           </div>
 
@@ -130,8 +145,8 @@
             <div class="timeline-card">
               <span class="timeline-date">2020 — 2023</span>
               <h3>Freelance Developer</h3>
-              <p class="timeline-company">Remote</p>
-              <p>Developed IoT projects for students, built POS systems using C#, 
+              <p class="timeline-company">🏢 Remote</p>
+              <p>Developed IoT projects for students, built POS systems using C#,
                 and created static websites using Node.js, React, and Tailwind CSS.</p>
             </div>
           </div>
