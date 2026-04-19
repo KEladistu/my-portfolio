@@ -29,6 +29,17 @@ themeBtn.addEventListener('click', () => {
       ? '/src/assets/images/kenneth-light.png'
       : '/src/assets/images/kenneth-dark.png';
   }
+
+  // ===== INSTANTLY UPDATE NAVBAR COLOR =====
+  if (window.scrollY > 50) {
+    navbar.style.background = isLight
+      ? 'rgba(250,247,242,0.98)'
+      : 'rgba(10,10,15,0.98)';
+  } else {
+    navbar.style.background = isLight
+      ? 'rgba(250,247,242,0.92)'
+      : 'rgba(10,10,15,0.85)';
+  }
 });
 
 // ===== HAMBURGER MENU =====
@@ -50,10 +61,15 @@ navLinks.querySelectorAll('a').forEach(link => {
 const navbar = document.getElementById('navbar');
 
 window.addEventListener('scroll', () => {
+  const isLight = document.body.classList.contains('light-mode');
   if (window.scrollY > 50) {
-    navbar.style.background = 'rgba(10,10,15,0.98)';
+    navbar.style.background = isLight
+      ? 'rgba(250,247,242,0.98)'
+      : 'rgba(10,10,15,0.98)';
   } else {
-    navbar.style.background = 'rgba(10,10,15,0.85)';
+    navbar.style.background = isLight
+      ? 'rgba(250,247,242,0.92)'
+      : 'rgba(10,10,15,0.85)';
   }
 });
 
