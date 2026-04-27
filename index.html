@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Kenneth Eladistu — Full-Stack Developer Portfolio" />
     <title>Kenneth Eladistu | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="/src/css/style.css" />
   </head>
   <body>
@@ -31,7 +33,7 @@
     <section id="hero">
       <div class="hero-content">
         <p class="hero-tag">Hello, I'm</p>
-        <h1>Kenneth <span id="last-name">Eladistu</span> <span id="typed"></span></h1>
+        <h1>Kenneth<br><span class="hero-name-line"><span id="last-name">Eladistu</span> <span id="typed"></span></span></h1>
         <p class="hero-sub">Full-Stack Developer with 5 years of experience currently based in the Philippines.</p>
       <div class="hero-btns">
         <a href="#projects" class="btn-primary">View My Work</a>
@@ -114,7 +116,7 @@
     <!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-container">
-    <h2 class="section-title">My Experience</h2>
+    <h2 class="section-title">My <span>Experience</span></h2>
     <div class="timeline">
 
       <div class="timeline-item">
@@ -169,24 +171,73 @@
     <section id="skills">
       <div class="section-container">
         <h2 class="section-title">My <span>Skills</span></h2>
-        <div class="skills-grid">
-          <div class="skill-item">React</div>
-          <div class="skill-item">Vite</div>
-          <div class="skill-item">NodeJS</div>
-          <div class="skill-item">Django</div>
-          <div class="skill-item">Flutter</div>
-          <div class="skill-item">HTML5</div>
-          <div class="skill-item">CSS3</div>
-          <div class="skill-item">JavaScript</div>
-          <div class="skill-item">C++</div>
-          <div class="skill-item">Python</div>
-          <div class="skill-item">PostgreSQL</div>
-          <div class="skill-item">Azure Cloud</div>
-          <div class="skill-item">Git & GitHub</div>
-          <div class="skill-item">Responsive Design</div>
-          <div class="skill-item">Mobile-App Design</div>
-          <div class="skill-item">UI/UX</div>
-          <div class="skill-item">Docker</div>
+        <div class="skills-categories">
+
+          <div class="skill-category">
+            <div class="skill-cat-header">
+              <span class="skill-cat-icon">⌨</span>
+              <div>
+                <h3 class="skill-cat-title">Programming Languages</h3>
+                <span class="skill-cat-count">3 skills</span>
+              </div>
+            </div>
+            <div class="skill-chips">
+              <span>JavaScript</span>
+              <span>Python</span>
+              <span>C++</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-cat-header">
+              <span class="skill-cat-icon">⬢</span>
+              <div>
+                <h3 class="skill-cat-title">Frameworks & Libraries</h3>
+                <span class="skill-cat-count">5 skills</span>
+              </div>
+            </div>
+            <div class="skill-chips">
+              <span>React</span>
+              <span>Django</span>
+              <span>NodeJS</span>
+              <span>Vite</span>
+              <span>Flutter</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-cat-header">
+              <span class="skill-cat-icon">⚙</span>
+              <div>
+                <h3 class="skill-cat-title">Cloud & DevOps</h3>
+                <span class="skill-cat-count">4 skills</span>
+              </div>
+            </div>
+            <div class="skill-chips">
+              <span>Docker</span>
+              <span>Azure Cloud</span>
+              <span>PostgreSQL</span>
+              <span>Git & GitHub</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-cat-header">
+              <span class="skill-cat-icon">✦</span>
+              <div>
+                <h3 class="skill-cat-title">Frontend & Design</h3>
+                <span class="skill-cat-count">5 skills</span>
+              </div>
+            </div>
+            <div class="skill-chips">
+              <span>HTML5</span>
+              <span>CSS3</span>
+              <span>UI/UX</span>
+              <span>Responsive Design</span>
+              <span>Mobile-App Design</span>
+            </div>
+          </div>
+
         </div>
       </div>
     </section>

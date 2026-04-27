@@ -33,11 +33,11 @@ themeBtn.addEventListener('click', () => {
   // ===== INSTANTLY UPDATE NAVBAR COLOR =====
   if (window.scrollY > 50) {
     navbar.style.background = isLight
-      ? 'rgba(250,247,242,0.98)'
+      ? 'rgba(255,255,255,0.98)'
       : 'rgba(10,10,15,0.98)';
   } else {
     navbar.style.background = isLight
-      ? 'rgba(250,247,242,0.92)'
+      ? 'rgba(255,255,255,0.92)'
       : 'rgba(10,10,15,0.85)';
   }
 });
@@ -64,11 +64,11 @@ window.addEventListener('scroll', () => {
   const isLight = document.body.classList.contains('light-mode');
   if (window.scrollY > 50) {
     navbar.style.background = isLight
-      ? 'rgba(250,247,242,0.98)'
+      ? 'rgba(255,255,255,0.98)'
       : 'rgba(10,10,15,0.98)';
   } else {
     navbar.style.background = isLight
-      ? 'rgba(250,247,242,0.92)'
+      ? 'rgba(255,255,255,0.92)'
       : 'rgba(10,10,15,0.85)';
   }
 });
@@ -105,9 +105,9 @@ const sectionObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       navItems.forEach(link => {
-        link.style.color = '';
+        link.classList.remove('active');
         if (link.getAttribute('href') === `#${entry.target.id}`) {
-          link.style.color = 'var(--accent)';
+          link.classList.add('active');
         }
       });
     }
