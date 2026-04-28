@@ -6,7 +6,7 @@ const body = document.body;
 const pic = document.getElementById('profile-pic');
 if (pic) {
   pic.src = localStorage.getItem('theme') === 'light'
-    ? '/src/assets/images/kenneth-light.png'
+    ? '/src/assets/images/kenneth-light.jpg'
     : '/src/assets/images/kenneth-dark.png';
 }
 
@@ -26,7 +26,7 @@ themeBtn.addEventListener('click', () => {
   const pic = document.getElementById('profile-pic');
   if (pic) {
     pic.src = isLight
-      ? '/src/assets/images/kenneth-light.png'
+      ? '/src/assets/images/kenneth-light.jpg'
       : '/src/assets/images/kenneth-dark.png';
   }
 
@@ -145,3 +145,62 @@ function type() {
 }
 
 type();
+
+// ===== TOUCH: CARD FLIP =====
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+if (isTouchDevice) {
+  document.querySelectorAll('.project-card.has-preview').forEach(card => {
+    card.addEventListener('click', () => {
+      const isFlipped = card.classList.contains('touch-flipped');
+      document.querySelectorAll('.project-card.has-preview.touch-flipped').forEach(c => c.classList.remove('touch-flipped'));
+      if (!isFlipped) card.classList.add('touch-flipped');
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.project-card.has-preview')) {
+      document.querySelectorAll('.project-card.has-preview.touch-flipped').forEach(c => c.classList.remove('touch-flipped'));
+    }
+  });
+}
+
+// ===== CUSTOM CURSOR =====
+if (window.matchMedia('(pointer: fine)').matches) {
+  const dot  = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+
+  let mx = -100, my = -100;
+  let rx = -100, ry = -100;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX;
+    my = e.clientY;
+    dot.style.transform = `translate(${mx - 3.5}px, ${my - 3.5}px)`;
+  });
+
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity = '';
+    ring.style.opacity = '';
+  });
+
+  document.addEventListener('mousedown', () => document.body.classList.add('cursor-clicking'));
+  document.addEventListener('mouseup',   () => document.body.classList.remove('cursor-clicking'));
+
+  document.addEventListener('mouseover', e => {
+    const isInteractive = e.target.closest('a, button, .project-card, .skill-category, .timeline-card, .about-img');
+    document.body.classList.toggle('cursor-hovering', !!isInteractive);
+  });
+
+  (function animateRing() {
+    rx += (mx - rx) * 0.13;
+    ry += (my - ry) * 0.13;
+    ring.style.transform = `translate(${rx - 14}px, ${ry - 14}px)`;
+    requestAnimationFrame(animateRing);
+  })();
+
+  document.body.classList.add('has-custom-cursor');
+}
