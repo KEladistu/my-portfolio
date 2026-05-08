@@ -6,8 +6,8 @@ const body = document.body;
 const pic = document.getElementById('profile-pic');
 if (pic) {
   pic.src = localStorage.getItem('theme') === 'light'
-    ? '/src/assets/images/kenneth-light.jpg'
-    : '/src/assets/images/kenneth-dark.png';
+    ? '/images/kenneth-light.jpg'
+    : '/images/kenneth-dark.png';
 }
 
 // Check saved preference
@@ -26,8 +26,8 @@ themeBtn.addEventListener('click', () => {
   const pic = document.getElementById('profile-pic');
   if (pic) {
     pic.src = isLight
-      ? '/src/assets/images/kenneth-light.jpg'
-      : '/src/assets/images/kenneth-dark.png';
+      ? '/images/kenneth-light.jpg'
+      : '/images/kenneth-dark.png';
   }
 
   // ===== INSTANTLY UPDATE NAVBAR COLOR =====
