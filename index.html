@@ -86,7 +86,7 @@
             <div class="card-back">
               <img src="/src/assets/images/myportfolio.png" alt="My Portfolio Preview" />
               <div class="card-back-overlay">
-                <a href="#" class="btn-primary">View Project</a>
+                <button class="btn-primary" id="portfolio-view-btn">View Project</button>
               </div>
             </div>
           </div>
@@ -263,6 +263,25 @@
     <footer>
       <p>© 2026 Kenneth Eladistu. Hand-coded with passion</p>
     </footer>
+
+    <!-- PROJECT MODAL -->
+    <div id="project-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-label="Project Screenshots" hidden>
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 class="modal-title" id="modal-title">My Personal Portfolio</h3>
+          <div class="modal-header-right">
+            <span class="modal-counter" id="modal-counter">1 / 8</span>
+            <button class="modal-close" id="modal-close" aria-label="Close">&times;</button>
+          </div>
+        </div>
+        <div class="modal-img-wrap">
+          <button class="modal-nav modal-prev" id="modal-prev" aria-label="Previous">&#8249;</button>
+          <img src="" alt="Portfolio screenshot" id="modal-img" class="modal-img" />
+          <button class="modal-nav modal-next" id="modal-next" aria-label="Next">&#8250;</button>
+        </div>
+        <div class="modal-dots" id="modal-dots"></div>
+      </div>
+    </div>
 
     <script type="module" src="/src/main.js"></script>
   </body>

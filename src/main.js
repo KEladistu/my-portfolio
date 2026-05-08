@@ -164,6 +164,83 @@ if (isTouchDevice) {
   });
 }
 
+// ===== PROJECT MODAL =====
+const portfolioImages = [
+  '/images/projects/portfolio/frontpageportfolio.png',
+  '/images/projects/portfolio/lightmodeportfolio.png',
+  '/images/projects/portfolio/darkmodeaboutme.png',
+  '/images/projects/portfolio/aboutmelightmode.png',
+  '/images/projects/portfolio/myprojects.png',
+  '/images/projects/portfolio/myexperience.png',
+  '/images/projects/portfolio/myskills.png',
+  '/images/projects/portfolio/getintouch.png',
+];
+
+const modal       = document.getElementById('project-modal');
+const modalImg    = document.getElementById('modal-img');
+const modalDots   = document.getElementById('modal-dots');
+const modalCounter = document.getElementById('modal-counter');
+let currentIndex  = 0;
+
+function buildDots() {
+  modalDots.innerHTML = '';
+  portfolioImages.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'modal-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', `Go to screenshot ${i + 1}`);
+    dot.addEventListener('click', () => goTo(i));
+    modalDots.appendChild(dot);
+  });
+}
+
+function goTo(index) {
+  currentIndex = (index + portfolioImages.length) % portfolioImages.length;
+  modalImg.classList.add('fading');
+  setTimeout(() => {
+    modalImg.src = portfolioImages[currentIndex];
+    modalImg.classList.remove('fading');
+  }, 150);
+  modalCounter.textContent = `${currentIndex + 1} / ${portfolioImages.length}`;
+  modalDots.querySelectorAll('.modal-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === currentIndex);
+  });
+}
+
+function openModal() {
+  buildDots();
+  goTo(0);
+  modal.removeAttribute('hidden');
+  requestAnimationFrame(() => modal.classList.add('modal-visible'));
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  modal.classList.remove('modal-visible');
+  setTimeout(() => {
+    modal.setAttribute('hidden', '');
+    document.body.style.overflow = '';
+  }, 250);
+}
+
+document.getElementById('portfolio-view-btn').addEventListener('click', (e) => {
+  e.stopPropagation();
+  openModal();
+});
+document.getElementById('modal-close').addEventListener('click', closeModal);
+document.getElementById('modal-prev').addEventListener('click', () => goTo(currentIndex - 1));
+document.getElementById('modal-next').addEventListener('click', () => goTo(currentIndex + 1));
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) closeModal();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (modal.hasAttribute('hidden')) return;
+  if (e.key === 'Escape')      closeModal();
+  if (e.key === 'ArrowLeft')   goTo(currentIndex - 1);
+  if (e.key === 'ArrowRight')  goTo(currentIndex + 1);
+});
+
 // ===== CUSTOM CURSOR =====
 if (window.matchMedia('(pointer: fine)').matches) {
   const dot  = document.getElementById('cursor-dot');
