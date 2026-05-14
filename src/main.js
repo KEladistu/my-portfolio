@@ -188,6 +188,14 @@ const projectData = {
       '/images/projects/work/superuserdashboardaegis.png',
     ],
   },
+  roboticarm: {
+    title: 'Robotic Arm Mobile App',
+    images: [
+      '/images/projects/roboticarm/mobileappsignup.png',
+      '/images/projects/roboticarm/controlapp.png',
+      '/images/projects/roboticarm/sampleviewapp.png',
+    ],
+  },
 };
 
 const modal        = document.getElementById('project-modal');
@@ -248,6 +256,10 @@ document.getElementById('portfolio-view-btn').addEventListener('click', (e) => {
 document.getElementById('work-view-btn').addEventListener('click', (e) => {
   e.stopPropagation();
   openModal('work');
+});
+document.getElementById('roboticarm-view-btn').addEventListener('click', (e) => {
+  e.stopPropagation();
+  openModal('roboticarm');
 });
 document.getElementById('modal-close').addEventListener('click', closeModal);
 document.getElementById('modal-prev').addEventListener('click', () => goTo(currentIndex - 1));
