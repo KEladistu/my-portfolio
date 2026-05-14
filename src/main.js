@@ -165,26 +165,42 @@ if (isTouchDevice) {
 }
 
 // ===== PROJECT MODAL =====
-const portfolioImages = [
-  '/images/projects/portfolio/frontpageportfolio.png',
-  '/images/projects/portfolio/lightmodeportfolio.png',
-  '/images/projects/portfolio/darkmodeaboutme.png',
-  '/images/projects/portfolio/aboutmelightmode.png',
-  '/images/projects/portfolio/myprojects.png',
-  '/images/projects/portfolio/myexperience.png',
-  '/images/projects/portfolio/myskills.png',
-  '/images/projects/portfolio/getintouch.png',
-];
+const projectData = {
+  portfolio: {
+    title: 'My Personal Portfolio',
+    images: [
+      '/images/projects/portfolio/frontpageportfolio.png',
+      '/images/projects/portfolio/lightmodeportfolio.png',
+      '/images/projects/portfolio/darkmodeaboutme.png',
+      '/images/projects/portfolio/aboutmelightmode.png',
+      '/images/projects/portfolio/myprojects.png',
+      '/images/projects/portfolio/myexperience.png',
+      '/images/projects/portfolio/myskills.png',
+      '/images/projects/portfolio/getintouch.png',
+    ],
+  },
+  work: {
+    title: 'Work Project',
+    images: [
+      '/images/projects/work/frontpageaegist.png',
+      '/images/projects/work/createnewaccaegis.png',
+      '/images/projects/work/regularuseraegis.png',
+      '/images/projects/work/superuserdashboardaegis.png',
+    ],
+  },
+};
 
-const modal       = document.getElementById('project-modal');
-const modalImg    = document.getElementById('modal-img');
-const modalDots   = document.getElementById('modal-dots');
+const modal        = document.getElementById('project-modal');
+const modalImg     = document.getElementById('modal-img');
+const modalDots    = document.getElementById('modal-dots');
 const modalCounter = document.getElementById('modal-counter');
-let currentIndex  = 0;
+const modalTitle   = document.getElementById('modal-title');
+let currentIndex   = 0;
+let activeImages   = [];
 
 function buildDots() {
   modalDots.innerHTML = '';
-  portfolioImages.forEach((_, i) => {
+  activeImages.forEach((_, i) => {
     const dot = document.createElement('button');
     dot.className = 'modal-dot' + (i === 0 ? ' active' : '');
     dot.setAttribute('aria-label', `Go to screenshot ${i + 1}`);
@@ -194,19 +210,22 @@ function buildDots() {
 }
 
 function goTo(index) {
-  currentIndex = (index + portfolioImages.length) % portfolioImages.length;
+  currentIndex = (index + activeImages.length) % activeImages.length;
   modalImg.classList.add('fading');
   setTimeout(() => {
-    modalImg.src = portfolioImages[currentIndex];
+    modalImg.src = activeImages[currentIndex];
     modalImg.classList.remove('fading');
   }, 150);
-  modalCounter.textContent = `${currentIndex + 1} / ${portfolioImages.length}`;
+  modalCounter.textContent = `${currentIndex + 1} / ${activeImages.length}`;
   modalDots.querySelectorAll('.modal-dot').forEach((d, i) => {
     d.classList.toggle('active', i === currentIndex);
   });
 }
 
-function openModal() {
+function openModal(projectKey) {
+  const project = projectData[projectKey];
+  activeImages = project.images;
+  modalTitle.textContent = project.title;
   buildDots();
   goTo(0);
   modal.removeAttribute('hidden');
@@ -224,7 +243,11 @@ function closeModal() {
 
 document.getElementById('portfolio-view-btn').addEventListener('click', (e) => {
   e.stopPropagation();
-  openModal();
+  openModal('portfolio');
+});
+document.getElementById('work-view-btn').addEventListener('click', (e) => {
+  e.stopPropagation();
+  openModal('work');
 });
 document.getElementById('modal-close').addEventListener('click', closeModal);
 document.getElementById('modal-prev').addEventListener('click', () => goTo(currentIndex - 1));
